@@ -9,7 +9,7 @@ app = Flask(__name__)
 VIDEO_DIR = 'static/videos'
 os.makedirs(VIDEO_DIR, exist_ok=True)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return jsonify({"message": "OK"})
 
