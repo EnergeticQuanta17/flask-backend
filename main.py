@@ -1,28 +1,13 @@
-from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
-import time
+from flask import Flask, jsonify
 import os
 
 app = Flask(__name__)
 
-# Define directory for generated videos
-VIDEO_DIR = 'static/videos'
-os.makedirs(VIDEO_DIR, exist_ok=True)
 
 @app.route('/')
 def index():
-    return jsonify({"message": "OK"})
+    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
 
-@app.route('/run', methods=['GET'])
-def run_rl():
-    # data = request.get_json()
-    
-    video_url = f"/static/videos/countdown.mp4"
-    return jsonify({'videoUrl': video_url})
-
-@app.route('/static/videos/<path:filename>', methods=['GET'])
-def serve_video(filename):
-    return send_from_directory(VIDEO_DIR, filename)
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
