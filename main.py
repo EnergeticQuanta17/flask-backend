@@ -1,15 +1,19 @@
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
+import time
 import os
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+# CORS(app)
 
 # Define directory for generated videos
 VIDEO_DIR = 'static/videos'
 os.makedirs(VIDEO_DIR, exist_ok=True)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
-    return jsonify({"message": "OK"})
+    return jsonify({"message": "Ok"})
 
 @app.route('/run', methods=['GET'])
 def run_rl():
@@ -21,6 +25,6 @@ def run_rl():
 @app.route('/static/videos/<path:filename>', methods=['GET'])
 def serve_video(filename):
     return send_from_directory(VIDEO_DIR, filename)
-    
+
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True)
