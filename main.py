@@ -11,7 +11,7 @@ CORS(app)
 VIDEO_DIR = 'static/videos'
 os.makedirs(VIDEO_DIR, exist_ok=True)
 
-@app.route('/run', methods=['GET'])
+@app.route('/', methods=['GET'])
 def run_rl():
     return jsonify({"message": "OK"})
 
