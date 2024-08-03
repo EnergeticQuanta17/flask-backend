@@ -13,6 +13,10 @@ os.makedirs(VIDEO_DIR, exist_ok=True)
 
 @app.route('/run', methods=['GET'])
 def run_rl():
+    return jsonify({"message": "OK"})
+
+@app.route('/run', methods=['GET'])
+def run_rl():
     # data = request.get_json()
     
     video_url = f"/static/videos/countdown.mp4"
