@@ -4,8 +4,6 @@ import time
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
-CORS(app)
 
 # Define directory for generated videos
 VIDEO_DIR = 'static/videos'
@@ -27,4 +25,4 @@ def serve_video(filename):
     return send_from_directory(VIDEO_DIR, filename)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
