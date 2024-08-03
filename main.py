@@ -12,7 +12,7 @@ VIDEO_DIR = 'static/videos'
 os.makedirs(VIDEO_DIR, exist_ok=True)
 
 @app.route('/', methods=['GET'])
-def run_rl():
+def index():
     return jsonify({"message": "OK"})
 
 @app.route('/run', methods=['GET'])
